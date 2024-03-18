@@ -1,0 +1,100 @@
+Program.Sub.ScreenSU.Start
+Gui.frmCodes..Create
+Gui.frmCodes..Caption("ADP Earnings Code Maintenance")
+Gui.frmCodes..Size(12105,10695)
+Gui.frmCodes..MinX(0)
+Gui.frmCodes..MinY(0)
+Gui.frmCodes..Position(0,0)
+Gui.frmCodes..BackColor(-2147483633)
+Gui.frmCodes..MaxButton(False)
+Gui.frmCodes..MousePointer(0)
+Gui.frmCodes..Sizeable(False)
+Gui.frmCodes..Event(UnLoad,frmCodes_UnLoad)
+Gui.frmCodes.GsGcCodes.Create(GsGridControl)
+Gui.frmCodes.GsGcCodes.Size(11850,10080)
+Gui.frmCodes.GsGcCodes.Position(0,0)
+Gui.frmCodes.GsGcCodes.Anchor(15)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+f.ODBC.Connection!con.OpenCompanyConnection
+f.Intrinsic.Control.CallSub(Initialize)
+f.Intrinsic.Control.CallSub(LoadGrid)
+gui.frmCodes..Show
+Program.Sub.Main.End
+
+Program.Sub.LoadGrid.Start
+	f.Intrinsic.Control.Try	
+		v.Local.iCnt.Declare
+		v.Local.sFields.Declare
+		
+		F.Data.DataTable.CreateFromSQL("dtEC","con","select * from gcg_6142_ecmaint",True)
+		gui.frmCodes.GsGcCodes.AddGridviewFromDatatable("gvEC","dtEC")
+		
+		f.Intrinsic.String.Split(v.DataTable.dtEC.FieldNames, "*!*", v.Local.sFields)
+		f.Intrinsic.Control.For(v.Local.iCnt, 0, v.Local.sFields.UBound, 1)
+			gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "HeaderFontBold", True)
+			gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "Visible", True)
+			gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "ReadOnly", False)
+			gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "AllowEdit", True)
+			gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "HeaderHAlignment", "Center")
+			gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "CellHAlignment", "Center")
+			'gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "HeaderBackColor", v.Color.GSS)
+			'gui.frmCodes.GsGcCodes.SetColumnProperty("gvEC", v.Local.sFields(v.Local.iCnt), "HeaderForeColor", v.Color.White)
+		f.Intrinsic.Control.Next(v.Local.iCnt)
+		
+		gui.frmCodes.GsGcCodes.SetGridviewProperty("gvEC","AllowAddRows",True)
+		gui.frmCodes.GsGcCodes.SetGridviewProperty("gvEC","AllowDeleteRows",True)
+		
+		gui.frmCodes.GsGcCodes.MainView("gvEC")
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.LoadGrid.End
+
+Program.Sub.Initialize.Start
+	f.Intrinsic.Control.Try
+		v.Local.bExists.Declare
+		v.local.sSQL.Declare
+		f.ODBC.Connection!con.TableExists("GCG_6142_ECMAINT",v.Local.bExists)
+		f.Intrinsic.Control.If(v.Local.bExists,=,False)
+			f.ODBC.Connection!con.execute("CREATE TABLE GCG_6142_ECMAINT (GSS_EC VARCHAR(50) NOT NULL, ADP_EC VARCHAR(50) NOT NULL);")
+			f.ODBC.Connection!con.execute("ALTER TABLE GCG_6142_ECMAINT ADD CONSTRAINT PK_GSS_EC PRIMARY KEY  ( GSS_EC ) USING 0;")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Initialize.End
+
+Program.Sub.frmCodes_UnLoad.Start
+	f.Intrinsic.Control.Try
+		'Save data
+		'f.Data.DataTable.acceptchanges("dtEC")
+		f.Data.DataTable.SaveToDB("dtEC","con","GCG_6142_ECMAINT","GSS_EC",7)
+		f.Intrinsic.UI.Msgbox("Changes saved to DB","Success")
+		'End the form
+		f.Intrinsic.Control.End
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.frmCodes_UnLoad.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+
+'Closes ODBC connection, default to connection : "con"
+f.Intrinsic.Control.If(v.ODBC!con.State, =, 1)
+	f.ODBC.Connection!con.Close
+f.Intrinsic.Control.EndIf
+
+'Generic Error message.
+f.Intrinsic.String.Build("Project GCG_6142_ECMaint.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+
+f.Intrinsic.Control.End
+Program.Sub.ErrorMsg.End
+
+
