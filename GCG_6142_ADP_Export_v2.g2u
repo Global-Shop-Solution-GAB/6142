@@ -1,0 +1,340 @@
+Program.Sub.ScreenSU.Start
+
+Gui.SS_Form1..Create
+Gui.SS_Form1..Caption("ADP Payroll Export")
+Gui.SS_Form1..Size(2665,3210)
+Gui.SS_Form1..Position(0,0)
+Gui.SS_Form1..AlwaysOnTop(False)
+Gui.SS_Form1..FontName("Arial")
+Gui.SS_Form1..FontSize(8)
+Gui.SS_Form1..ForeColor(0)
+Gui.SS_Form1..Backcolor(-2147483633)
+Gui.SS_Form1..ControlBox(True)
+Gui.SS_Form1..MaxButton(False)
+Gui.SS_Form1..MinButton(False)
+Gui.SS_Form1..MousePointer(0)
+Gui.SS_Form1..Moveable(True)
+Gui.SS_Form1..Sizeable(False)
+Gui.SS_Form1..ShowInTaskBar(True)
+Gui.SS_Form1..TitleBar(True)
+
+Gui.SS_Form1..Event(unload, ss_form1_unload)
+
+Gui.SS_Form1.lbl_txtCCC.Create(label)
+Gui.SS_Form1.lbl_txtCCC.Caption("Company Code")
+Gui.SS_Form1.lbl_txtCCC.Visible(True)
+Gui.SS_Form1.lbl_txtCCC.Size(1800,200)
+Gui.SS_Form1.lbl_txtCCC.Zorder(1)
+Gui.SS_Form1.lbl_txtCCC.Position(100,135)
+Gui.SS_Form1.lbl_txtCCC.Enabled(True)
+Gui.SS_Form1.lbl_txtCCC.Alignment(0)
+Gui.SS_Form1.lbl_txtCCC.FontName("Arial")
+Gui.SS_Form1.lbl_txtCCC.FontSize(8)
+Gui.SS_Form1.lbl_txtCCC.Backcolor(-2147483633)
+Gui.SS_Form1.lbl_txtCCC.BackStyle(0)
+Gui.SS_Form1.lbl_txtCCC.Tooltip("")
+Gui.SS_Form1.lbl_txtCCC.ControlGroup(0)
+Gui.SS_Form1.lbl_txtCCC.DefaultValue("")
+
+
+Gui.SS_Form1.txtCCC.Create(textbox)
+Gui.SS_Form1.txtCCC.Text("")
+Gui.SS_Form1.txtCCC.Visible(True)
+Gui.SS_Form1.txtCCC.Size(1800,330)
+Gui.SS_Form1.txtCCC.Zorder(1)
+Gui.SS_Form1.txtCCC.Position(100,335)
+Gui.SS_Form1.txtCCC.Enabled(True)
+Gui.SS_Form1.txtCCC.Alignment(0)
+Gui.SS_Form1.txtCCC.FontName("Arial")
+Gui.SS_Form1.txtCCC.FontSize(8)
+Gui.SS_Form1.txtCCC.Backcolor(16777215)
+Gui.SS_Form1.txtCCC.BorderStyle(1)
+Gui.SS_Form1.txtCCC.TabStop(True)
+Gui.SS_Form1.txtCCC.TabIndex(1)
+Gui.SS_Form1.txtCCC.Tooltip("")
+Gui.SS_Form1.txtCCC.ControlGroup(0)
+Gui.SS_Form1.txtCCC.DefaultValue("")
+
+
+Gui.SS_Form1.lbl_txtBBB.Create(label)
+Gui.SS_Form1.lbl_txtBBB.Caption("Batch ID")
+Gui.SS_Form1.lbl_txtBBB.Visible(True)
+Gui.SS_Form1.lbl_txtBBB.Size(1800,200)
+Gui.SS_Form1.lbl_txtBBB.Zorder(1)
+Gui.SS_Form1.lbl_txtBBB.Position(100,835)
+Gui.SS_Form1.lbl_txtBBB.Enabled(True)
+Gui.SS_Form1.lbl_txtBBB.Alignment(0)
+Gui.SS_Form1.lbl_txtBBB.FontName("Arial")
+Gui.SS_Form1.lbl_txtBBB.FontSize(8)
+Gui.SS_Form1.lbl_txtBBB.Backcolor(-2147483633)
+Gui.SS_Form1.lbl_txtBBB.BackStyle(0)
+Gui.SS_Form1.lbl_txtBBB.Tooltip("")
+Gui.SS_Form1.lbl_txtBBB.ControlGroup(0)
+Gui.SS_Form1.lbl_txtBBB.DefaultValue("")
+
+
+Gui.SS_Form1.txtBBB.Create(textbox)
+Gui.SS_Form1.txtBBB.Text("")
+Gui.SS_Form1.txtBBB.Visible(True)
+Gui.SS_Form1.txtBBB.Size(1800,330)
+Gui.SS_Form1.txtBBB.Zorder(1)
+Gui.SS_Form1.txtBBB.Position(100,1035)
+Gui.SS_Form1.txtBBB.Enabled(True)
+Gui.SS_Form1.txtBBB.Alignment(0)
+Gui.SS_Form1.txtBBB.FontName("Arial")
+Gui.SS_Form1.txtBBB.FontSize(8)
+Gui.SS_Form1.txtBBB.Backcolor(16777215)
+Gui.SS_Form1.txtBBB.BorderStyle(1)
+Gui.SS_Form1.txtBBB.TabStop(True)
+Gui.SS_Form1.txtBBB.TabIndex(2)
+Gui.SS_Form1.txtBBB.Tooltip("")
+Gui.SS_Form1.txtBBB.ControlGroup(0)
+Gui.SS_Form1.txtBBB.DefaultValue("")
+
+
+Gui.SS_Form1.cmdOk.Create(button)
+Gui.SS_Form1.cmdOk.Caption("Ok")
+Gui.SS_Form1.cmdOk.Visible(True)
+Gui.SS_Form1.cmdOk.Size(1000,360)
+Gui.SS_Form1.cmdOk.Zorder(0)
+Gui.SS_Form1.cmdOk.Position(100,2235)
+Gui.SS_Form1.cmdOk.Enabled(True)
+Gui.SS_Form1.cmdOk.FontName("Arial")
+Gui.SS_Form1.cmdOk.FontSize(8)
+Gui.SS_Form1.cmdOk.TabStop(True)
+Gui.SS_Form1.cmdOk.TabIndex(5)
+Gui.SS_Form1.cmdOk.Tooltip("")
+Gui.SS_Form1.cmdOk.ControlGroup(0)
+Gui.SS_Form1.cmdOk.DefaultValue("")
+
+Gui.SS_Form1.cmdOk.Event(click, cmdok_click)
+
+Gui.SS_Form1.lbl_txtFile.Create(label)
+Gui.SS_Form1.lbl_txtFile.Caption("File Name")
+Gui.SS_Form1.lbl_txtFile.Visible(True)
+Gui.SS_Form1.lbl_txtFile.Size(1800,200)
+Gui.SS_Form1.lbl_txtFile.Zorder(1)
+Gui.SS_Form1.lbl_txtFile.Position(100,1535)
+Gui.SS_Form1.lbl_txtFile.Enabled(True)
+Gui.SS_Form1.lbl_txtFile.Alignment(0)
+Gui.SS_Form1.lbl_txtFile.FontName("Arial")
+Gui.SS_Form1.lbl_txtFile.FontSize(8)
+Gui.SS_Form1.lbl_txtFile.Backcolor(-2147483633)
+Gui.SS_Form1.lbl_txtFile.BackStyle(0)
+Gui.SS_Form1.lbl_txtFile.Tooltip("")
+Gui.SS_Form1.lbl_txtFile.ControlGroup(0)
+Gui.SS_Form1.lbl_txtFile.DefaultValue("")
+
+
+Gui.SS_Form1.txtFile.Create(textbox)
+Gui.SS_Form1.txtFile.Text("")
+Gui.SS_Form1.txtFile.Visible(True)
+Gui.SS_Form1.txtFile.Size(1800,330)
+Gui.SS_Form1.txtFile.Zorder(1)
+Gui.SS_Form1.txtFile.Position(100,1735)
+Gui.SS_Form1.txtFile.Enabled(True)
+Gui.SS_Form1.txtFile.Alignment(0)
+Gui.SS_Form1.txtFile.FontName("Arial")
+Gui.SS_Form1.txtFile.FontSize(8)
+Gui.SS_Form1.txtFile.Backcolor(16777215)
+Gui.SS_Form1.txtFile.BorderStyle(1)
+Gui.SS_Form1.txtFile.TabStop(True)
+Gui.SS_Form1.txtFile.TabIndex(3)
+Gui.SS_Form1.txtFile.Tooltip("")
+Gui.SS_Form1.txtFile.ControlGroup(0)
+Gui.SS_Form1.txtFile.DefaultValue("")
+
+
+Gui.SS_Form1.cmd_txtFile.Create(button)
+Gui.SS_Form1.cmd_txtFile.Caption("^")
+Gui.SS_Form1.cmd_txtFile.Visible(True)
+Gui.SS_Form1.cmd_txtFile.Size(330,330)
+Gui.SS_Form1.cmd_txtFile.Zorder(0)
+Gui.SS_Form1.cmd_txtFile.Position(1985,1735)
+Gui.SS_Form1.cmd_txtFile.Enabled(True)
+Gui.SS_Form1.cmd_txtFile.FontName("Arial")
+Gui.SS_Form1.cmd_txtFile.FontSize(8)
+Gui.SS_Form1.cmd_txtFile.TabStop(True)
+Gui.SS_Form1.cmd_txtFile.TabIndex(4)
+Gui.SS_Form1.cmd_txtFile.Tooltip("")
+Gui.SS_Form1.cmd_txtFile.ControlGroup(0)
+Gui.SS_Form1.cmd_txtFile.DefaultValue("")
+
+Gui.SS_Form1.cmd_txtFile.Event(click,cmd_txtFile_Click)
+
+gui.SS_Form1.lbl_txtCCC.LabelStretch(True)
+gui.SS_Form1.lbl_txtBBB.LabelStretch(True)
+gui.SS_Form1.lbl_txtFile.LabelStretch(True)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+
+f.ODBC.Connection!Con.OpenConnection(v.Ambient.PDSN,v.Ambient.PUser,v.Ambient.PPass)
+gui.SS_Form1.txtCCC.SetFocus
+gui.SS_Form1..Show
+
+Program.Sub.Main.End
+
+Program.Sub.cmdOk_Click.Start
+v.Local.sMsg.Declare(String)
+
+gui.SS_Form1..Visible(false)
+'f.Intrinsic.String.Build("Writing {0}\EPI{1}{2}.csv file",v.Caller.FilesDir,v.Screen.SS_Form1!txtCCC.Text,v.Screen.SS_Form1!txtBBB.Text,v.Local.smsg)
+F.Intrinsic.String.Build("Writing {0} file",V.Screen.SS_Form1!txtFile.Text,V.Local.smsg)
+f.Intrinsic.UI.InvokeWaitDialog(v.Local.sMsg,"ADP Payroll Export")
+
+f.Intrinsic.Control.CallSub(collectdata)
+'f.Intrinsic.Control.CallSub(writefile)
+f.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.CallSub(ss_form1_unload)
+
+Program.Sub.cmdOk_Click.End
+
+Program.Sub.SS_Form1_Unload.Start
+
+f.ODBC.Connection!Con.Close
+f.Intrinsic.Control.End
+
+Program.Sub.SS_Form1_Unload.End
+
+Program.Sub.CollectData.Start
+	f.Intrinsic.Control.Try
+		v.Local.sFileText.Declare(string, "Co Code,Batch ID,File #,!!Employee Name,Temp Dept,Temp Rate,Reg Hours,O/T Hours")
+		v.Local.ifor.Declare
+		v.Local.ifor2.Declare
+		v.Local.sRunTime.Declare
+		v.Local.sRunDate.Declare
+		v.Local.sSel.Declare
+		v.Local.sFileTextSplit.Declare
+		v.Local.sFilter.Declare
+		v.Local.iColSeq.Declare(long,0)
+		v.Local.sColSeq.Declare
+		v.Local.sColSeq2.Declare
+		v.Local.sRowNum.Declare
+		v.Local.sFileOutput.Declare
+		
+		'Get the ADP code records
+		f.Data.DataTable.CreateFromSQL("dtEC","con","select gss_ec, adp_ec from gcg_6142_ecmaint")
+		
+		'Define datatable for holding totaled file information
+		f.Intrinsic.String.Replace(v.Local.sFileText," ","",v.Local.sFileTextSplit)
+		f.Intrinsic.String.Split(v.Local.sFileTextSplit,",",v.Local.sFileTextSplit)
+		f.Data.DataTable.Create("dtTotaledHrs")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","CoCode","string")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","BatchID","string")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","FileNum","string")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","EmpName","string")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","TempDept","string")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","TempRate","string")
+		f.Data.DataTable.AddColumn("dtTotaledHrs","RegHrs","FLOAT",0)
+		f.Data.DataTable.AddColumn("dtTotaledHrs","OTHrs","FLOAT",0)
+		
+		'Reconfigure the column titles to append any extra hours 3 codes as configured
+		f.Intrinsic.Control.For(v.Local.ifor,0,v.DataTable.dtEC.RowCount--,1)
+			f.Intrinsic.String.Build("{0},Hours 3 Code,Hours 3 Amount",v.Local.sFileText,v.Local.sFileText)
+			f.Intrinsic.Math.Add(v.Local.iColSeq,1,v.Local.iColSeq)
+			f.Intrinsic.String.Build("EC{0}",v.Local.iColSeq,v.Local.sColSeq)
+			f.Data.DataTable.AddColumn("dtTotaledHrs",v.Local.sColSeq,"string")
+			f.Intrinsic.String.Build("ECHrs{0}",v.Local.iColSeq,v.Local.sColSeq)
+			f.Data.DataTable.AddColumn("dtTotaledHrs",v.Local.sColSeq,"string")
+		f.Intrinsic.Control.Next(v.Local.ifor)
+		
+		
+		v.Local.ifor.Set(0)
+'		f.Intrinsic.Control.For(v.Local.ifor,0,v.Local.sFileTextSplit.UBound,1)
+'			f.Data.DataTable.AddColumn("dtTotaledHrs",v.Local.sFileTextSplit(v.Local.ifor),"string")
+'		f.Intrinsic.Control.Next(v.Local.ifor)
+		'Finished datatable columns should be something like this:
+		'	CoCode | BatchID | File# | !!EmployeeName | TempDept | TempRate | RegHours | O/THours | Hours3Code | Hours3Amount | Hours3Code | Hours3Amount | {etc......}
+		
+		'Get employee data from payroll
+		f.Intrinsic.String.Mid(v.Passed.888888,9,6,v.Local.sRunTime)
+		f.Intrinsic.String.Left(v.Passed.888888,8,v.Local.sRunDate)
+		f.Intrinsic.String.Build("select a.Employee, a.Type, a.EC, a.Descr, a.Hours, a.Name, b.adp_ec from Pyrl_Labor_Xfer a left join gcg_6142_ecmaint b on rtrim(a.descr)=rtrim(b.gss_ec) where a.Run_Cymd = '{0}' and a.Run_Time = '{1}' order by a.Employee",v.Local.sRunDate,v.Local.sRunTime,v.Local.sSel)
+		f.Data.DataTable.CreateFromSQL("dtPayroll","con",v.Local.sSel)
+		
+		'Get distinct list of employees
+		f.Data.DataView.Create("dtPayroll","dvPayroll",22)
+		f.Data.DataView.ToDataTableDistinct("dtPayroll","dvPayroll","dtEmployees","Employee*!*Name")
+		v.Local.ifor.Set(0)
+		'For each employee, loop through records to get RT, OT, then other earnings codes, each one going into an Hours 3 section
+		f.Intrinsic.Control.For(v.Local.ifor,0,v.DataTable.dtEmployees.RowCount--,1)
+			f.Data.DataTable.AddRow("dtTotaledHrs","FileNum",v.DataTable.dtEmployees(v.Local.ifor).Employee!FieldValTrim, "EmpName", v.DataTable.dtEmployees(v.Local.ifor).Name!FieldValTrim)
+			'Get regular hours
+			F.Intrinsic.Control.If(v.DataTable.dtEmployees(v.Local.ifor).Employee!FieldValTrim,=,"70015")
+				
+			F.Intrinsic.Control.EndIf
+			f.Intrinsic.String.Build("Employee='{0}' and Type='RT'",v.DataTable.dtEmployees(v.Local.ifor).Employee!FieldValTrim,v.Local.sFilter)
+			f.data.DataView.SetFilter("dtPayroll","dvPayroll",v.Local.sFilter)
+			F.Intrinsic.Control.IF(V.DataView.dtPayroll!dvPayroll.RowCount,>,0)
+				f.Data.DataTable.SetValue("dtTotaledHrs",v.DataTable.dtTotaledHrs.RowCount--,"RegHrs", v.DataView.dtPayroll!dvPayroll(0).Hours!FieldVal)
+			F.Intrinsic.Control.EndIf
+			
+			'Get OT hours
+			f.Intrinsic.String.Build("Employee='{0}' and Type='OT'",v.DataTable.dtEmployees(v.Local.ifor).Employee!FieldValTrim,v.Local.sFilter)
+			f.data.DataView.SetFilter("dtPayroll","dvPayroll",v.Local.sFilter)
+			F.Intrinsic.Control.IF(V.DataView.dtPayroll!dvPayroll.RowCount,>,0)
+				f.Data.DataTable.SetValue("dtTotaledHrs",v.DataTable.dtTotaledHrs.RowCount--,"OTHrs", v.DataView.dtPayroll!dvPayroll(0).Hours!FieldVal)
+			F.Intrinsic.Control.EndIf
+		
+			f.Intrinsic.String.Build("Employee='{0}' and (Type = 'HT' OR (TYPE='EC' AND ADP_EC <> ''))",v.DataTable.dtEmployees(v.Local.ifor).Employee!FieldValTrim,v.Local.sFilter)
+			f.data.DataView.SetFilter("dtPayroll","dvPayroll",v.Local.sFilter)
+			v.Local.ifor2.Set(0)
+			v.Local.iColSeq.Set(0)
+			f.Intrinsic.Control.For(v.Local.ifor2,0,v.DataView.dtPayroll!dvPayroll.RowCount--,1)
+				F.Intrinsic.Control.If(v.DataView.dtPayroll!dvPayroll(V.Local.ifor2).adp_ec!FieldVal,!=,"")
+					'Build the column names and add value
+					f.Intrinsic.Math.Add(v.Local.iColSeq,1,v.Local.iColSeq)
+					f.Intrinsic.String.Build("EC{0}",v.Local.iColSeq,v.Local.sColSeq)
+					f.Intrinsic.String.Build("ECHrs{0}",v.Local.iColSeq,v.Local.sColSeq2)
+					f.Data.DataTable.SetValue("dtTotaledHrs",v.DataTable.dtTotaledHrs.RowCount--, v.Local.sColSeq, v.DataView.dtPayroll!dvPayroll(V.Local.ifor2).adp_ec!FieldVal, v.Local.sColSeq2, v.DataView.dtPayroll!dvPayroll(V.Local.ifor2).Hours!FieldVal)
+				F.Intrinsic.Control.EndIf
+				
+			f.Intrinsic.Control.Next(v.Local.ifor2)
+		f.Intrinsic.Control.Next(v.Local.ifor)
+		
+		F.Data.DataTable.SetValue("dtTotaledHrs",-1,"CoCode",v.Screen.SS_Form1!txtCCC.Text)
+		F.Data.DataTable.SetValue("dtTotaledHrs",-1,"BatchID",v.Screen.SS_Form1!txtBBB.Text)
+		
+		'Write the data to the file
+		f.Data.DataView.create("dtTotaledHrs","dvTotaledHrs",22)
+		f.Data.DataView.ToString("dtTotaledHrs","dvTotaledHrs",v.DataTable.dtTotaledHrs.FieldNames,",",v.Ambient.newline,v.Local.sFileOutput)
+		f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sFileText,v.Ambient.NewLine,v.Local.sFileOutput,v.Local.sFileOutput)
+		F.Intrinsic.File.String2File(V.Screen.SS_Form1!txtFile.Text,V.Local.sFileOutput)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.CollectData.End
+
+Program.Sub.cmd_txtFile_Click.Start
+
+
+V.Local.sFileName.Declare(String)
+V.Local.bValid.Declare(Boolean)
+
+' make sure somehing was entered
+F.Intrinsic.String.Build("EPI{0}{1}.csv",V.Screen.SS_Form1!txtCCC.Text,V.Screen.SS_Form1!txtBBB.Text,V.Local.sFileName)
+F.Intrinsic.UI.ShowSaveFileDialog(V.Local.sFileName,".csv",V.Local.sFileName)
+F.Intrinsic.Control.If(V.Local.sFileName.Trim,=,"***CANCEL***")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+gui.SS_Form1.txtFile.Text(v.Local.sFileName)
+
+Program.Sub.cmd_txtFile_Click.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+
+'Closes ODBC connection, default to connection : "con"
+f.Intrinsic.Control.If(v.ODBC!con.State, =, 1)
+	f.ODBC.Connection!con.Close
+f.Intrinsic.Control.EndIf
+
+'Generic Error message.
+f.Intrinsic.String.Build("Project GCG_6142_ADP_Export_v2.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+Program.Sub.ErrorMsg.End
